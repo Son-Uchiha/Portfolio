@@ -44,6 +44,34 @@
   --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Theme Dracula Override */
+body.theme-dracula {
+  --bg-primary: #282a36;
+  --bg-secondary: #44475a;
+  --bg-card: #282a36;
+  --bg-card-hover: #44475a;
+  
+  --border: #6272a4;
+  --border-hover: #ff79c6;
+  
+  --text-primary: #f8f8f2;
+  --text-secondary: #bfcbef;
+  --text-muted: #6272a4;
+  
+  --accent: #ff79c6;
+  --accent-hover: #bd93f9;
+  --accent-glow: rgba(255, 121, 198, 0.2);
+  
+  --accent-green: #50fa7b;
+  --accent-blue: #8be9fd;
+  --accent-red: #ff5555;
+  --accent-yellow: #f1fa8c;
+  --accent-purple: #bd93f9;
+  
+  --gradient-1: linear-gradient(135deg, #44475a, #282a36);
+  --gradient-2: linear-gradient(135deg, #ff79c6, #bd93f9);
+}
+
 /* ============================================
    Reset & Base
    ============================================ */
@@ -193,6 +221,48 @@ img { max-width: 100%; display: block; }
   color: var(--accent);
   background: rgba(14, 165, 233, 0.1);
 }
+body.theme-dracula .nav-link:hover, body.theme-dracula .nav-link.active {
+  background: rgba(255, 121, 198, 0.1);
+}
+
+/* Navbar Actions (Theme & Lang Toggles) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 24px;
+}
+.nav-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  transition: var(--transition);
+}
+.nav-toggle-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(14, 165, 233, 0.1);
+}
+body.theme-dracula .nav-toggle-btn:hover {
+  background: rgba(255, 121, 198, 0.1);
+}
+.nav-toggle-btn svg, .nav-toggle-btn i {
+  width: 18px;
+  height: 18px;
+}
+.lang-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .nav-toggle {
   display: none; background: none; border: none; cursor: pointer;
   flex-direction: column; gap: 5px; padding: 4px;

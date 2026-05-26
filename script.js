@@ -76,4 +76,48 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollIndicator.style.opacity = window.scrollY > 100 ? '0' : '1';
     }, { passive: true });
   }
+  /* ----- 6. Theme Toggle (Dracula) ----- */
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const currentTheme = localStorage.getItem('theme') || 'dracula';
+  
+  // Áp dụng theme lưu trong localStorage
+  if (currentTheme === 'dracula') {
+    document.body.classList.add('theme-dracula');
+    if (window.lucide && themeToggleBtn) {
+      themeToggleBtn.innerHTML = '<i data-lucide="sun"></i>';
+      lucide.createIcons();
+    }
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('theme-dracula');
+      let theme = 'default';
+      
+      if (document.body.classList.contains('theme-dracula')) {
+        theme = 'dracula';
+        themeToggleBtn.innerHTML = '<i data-lucide="sun"></i>';
+      } else {
+        themeToggleBtn.innerHTML = '<i data-lucide="moon"></i>';
+      }
+      
+      localStorage.setItem('theme', theme);
+      if (window.lucide) {
+        lucide.createIcons(); // Re-render icon
+      }
+    });
+  }
+
+  /* ----- 7. Language Toggle ----- */
+  const langToggleBtn = document.getElementById('langToggleBtn');
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      // setLanguage được định nghĩa trong i18n.js
+      if (typeof setLanguage === 'function') {
+        const currentLang = localStorage.getItem('preferredLanguage') || 'vi';
+        const newLang = currentLang === 'vi' ? 'en' : 'vi';
+        setLanguage(newLang);
+      }
+    });
+  }
 });
